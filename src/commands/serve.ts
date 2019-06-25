@@ -2,7 +2,8 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { resolve } from 'path';
 import { Argv, Arguments } from 'yargs';
-import { configureGqlx, createServices, createService } from 'gqlx-apollo-express-server';
+import { open } from 'inspector';
+import { configureGqlx, createService } from 'gqlx-apollo-express-server';
 import { readFile, watch } from '../utils';
 
 export interface SchemaArguments {
@@ -14,6 +15,7 @@ export interface SchemaArguments {
   pathSubscriptions: string;
   serviceUrl?: string;
   watch?: boolean;
+  debug?: boolean;
 }
 
 export const command = 'serve <source>';
@@ -39,12 +41,16 @@ export function builder(args: Argv) {
     .string('path-subscriptions')
     .describe('path-subscriptions', 'The path for WebSocket connections.')
     .default('path-subscriptions', '/subscriptions')
+    .boolean('debug')
+    .describe('debug', 'Allows debugger statements and opens the node-inspector.')
+    .default('debug', false)
+    .alias('debug', 'inspect')
     .string('api')
     .describe('api', 'Path to the JS file containing exported function for an API.')
     .default('api', resolve(__dirname, '../api'))
     .boolean('watch')
-    .describe('watch', 'Path to the JS file containing exported function for an API.')
-    .default('watch', resolve(__dirname, '../api'));
+    .describe('watch', 'Watches the gqlx file for changes.')
+    .default('watch', false);
 }
 
 export function handler(argv: Arguments<SchemaArguments>) {
@@ -57,6 +63,9 @@ export function handler(argv: Arguments<SchemaArguments>) {
         url: argv.serviceUrl || argv.host,
       },
       apiDefinition,
+      {
+        debug: argv.debug,
+      },
     );
   const originalService = getService(readFile(argv.source));
   const app = express();
@@ -70,6 +79,10 @@ export function handler(argv: Arguments<SchemaArguments>) {
     createApi,
     services: [originalService],
   });
+
+  if (argv.debug) {
+    open();
+  }
 
   if (argv.watch) {
     watch(argv.source, content => {

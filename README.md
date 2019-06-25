@@ -72,11 +72,13 @@ Validates the schema from the given source gqlx file.
 
 `--api` - Path to the JS file containing exported function for an API (`string`, default: `defaultApiImpl`).
 
-`--watch` - Path to the JS file containing exported function for an API (`boolean`, default: `defaultApiImpl`).
+`--watch` - Watches the gqlx file for changes (`boolean`, default: `false`).
+
+`--debug` - Allows debugger statements and opens the node-inspector (`boolean`, default: `false`).
 
 ### `schema`
 
-Gets the schema from the given source gqlx file.
+Extracts the schema from the given source gqlx file.
 
 #### Positionals
 
@@ -116,6 +118,8 @@ gqlx serve example.gqlx --watch
 ```
 
 will give you a GraphQL server sitting at port 8080. You can access the interactive GraphQL explorer via [http://localhost:8080/graphiql](http://localhost:8080/graphiql). Note, since we supplied the `--watch` flag we can just edit the gqlx file (e.g., to add a new resource) making it possible to access the updated resource definitions without needing to restart the server.
+
+Furthermore, you can just add the `--debug` flag to enable writing `debugger;` statements in your gqlx files. This option lets you use the browser (e.g., Chrome Inspector reachable via [about://inspect](about://inspect)) to connect and debug your compiled gqlx resolvers.
 
 ## Contributing
 

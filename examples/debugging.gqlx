@@ -1,0 +1,8 @@
+type Query {
+  hello: String {
+    (() => {
+      debugger;
+      return 'Hello World!';
+    })()
+  }
+}

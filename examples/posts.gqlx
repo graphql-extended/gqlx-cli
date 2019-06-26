@@ -1,0 +1,22 @@
+type Comment {
+  id: String
+  name: String
+  body: String
+}
+
+type Post {
+  userId: String
+  id: String
+  body: String
+  title: String
+  comments: [Comment]
+}
+
+type Query {
+  posts: [Post] {
+    get('https://jsonplaceholder.typicode.com/posts').map(post => ({
+      ...post,
+      comments: get(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`),
+    }))
+  }
+}

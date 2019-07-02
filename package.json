@@ -1,7 +1,7 @@
 {
   "name": "gqlx-cli",
   "description": "Command line utility for GraphQL eXtended.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist",
   "types": "dist",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "concat-stream": "^2.0.0",
     "express": "^4.17.1",
     "gqlx-apollo-express-server": "^0.3.4",
-    "gqlx-js": "^0.2.5",
+    "gqlx-js": "^0.2.6",
     "request": "^2.88.0",
     "yargs": "^13.2.4"
   }

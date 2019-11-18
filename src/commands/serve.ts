@@ -1,9 +1,10 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as request from 'request';
 import { resolve } from 'path';
 import { Argv, Arguments } from 'yargs';
 import { open } from 'inspector';
-import { configureGqlx, createService } from 'gqlx-apollo-express-server';
+import { configureGqlx, createService, Service } from 'gqlx-apollo-express-server';
 import { readFile, watch } from '../utils';
 
 export interface SchemaArguments {
@@ -16,6 +17,7 @@ export interface SchemaArguments {
   serviceUrl?: string;
   watch?: boolean;
   debug?: boolean;
+  header?: string[];
 }
 
 export const command = 'serve <source>';
@@ -33,6 +35,13 @@ export function builder(args: Argv) {
     .string('host')
     .describe('host', 'The external hostname of the current server.')
     .default('host', 'http://localhost')
+    .array('header')
+    .describe('header', 'Additional http headers to be set on every request')
+    .example(
+      '$0 serve --header="Authorization=Bearer *****"',
+      'sets the Authorization header to "Bearer *****" for every request',
+    )
+    .default('header', [])
     .string('service-url')
     .describe('service-url', 'The root URL of the service target, if any.')
     .string('path-root')
@@ -69,6 +78,19 @@ export function handler(argv: Arguments<SchemaArguments>) {
     );
   const originalService = getService(readFile(argv.source));
   const app = express();
+
+  const fetch = request.defaults({
+    headers:
+      argv.header &&
+      argv.header
+        .map(arg => arg.split('=', 2)) // split key=value
+        .filter(tuple => tuple.length === 2 && tuple[1]) // remove elements without a value
+        .reduce(
+          (headers, [key, value]) => ({ ...headers, [key]: headers[key] ? [...headers[key], value] : [value] }),
+          {},
+        ),
+  });
+
   const gqlxServer = configureGqlx({
     port: argv.port,
     host: argv.host,
@@ -76,7 +98,9 @@ export function handler(argv: Arguments<SchemaArguments>) {
       root: argv.pathRoot,
       subscriptions: argv.pathSubscriptions,
     },
-    createApi,
+    createApi(...args) {
+      return createApi(fetch, ...args);
+    },
     services: [originalService],
   });
 

@@ -1,5 +1,5 @@
-import * as fetch from 'request';
-import { Request } from 'express';
+import { RequestAPI, Request, Options, RequiredUriUrl } from 'request';
+import { Request as ExpressRequest } from 'express';
 import { resolve } from 'url';
 import { MutationOptions, QueryOptions } from '../types';
 
@@ -9,7 +9,12 @@ function parseUrl(host: string, path: string) {
   return resolve(host, path);
 }
 
-export function request(method: string, req: Request | undefined, options: MutationOptions) {
+export function request(
+  fetch: RequestAPI<Request, Options, RequiredUriUrl>,
+  method: string,
+  req: ExpressRequest | undefined,
+  options: MutationOptions,
+) {
   return new Promise((resolve, reject) => {
     const headers = (req && req.headers) || {};
 

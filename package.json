@@ -1,7 +1,7 @@
 {
   "name": "gqlx-cli",
   "description": "Command line utility for GraphQL eXtended.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "dist",
   "types": "dist",
   "license": "MIT",
@@ -21,28 +21,28 @@
   "homepage": "https://graphql-extended.github.io",
   "author": "graphql-extended <gqlx@anglevisions.com>",
   "devDependencies": {
-    "@types/body-parser": "^1.17.0",
+    "@types/body-parser": "^1.19.0",
     "@types/express": "^4.17.0",
-    "@types/jest": "^23.3.10",
-    "@types/node": "^10.14.10",
-    "@types/request": "^2.48.1",
-    "@types/yargs": "^12.0.12",
-    "jest": "^24.8.0",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.3",
+    "@types/request": "^2.48.4",
+    "@types/yargs": "^15.0.4",
+    "jest": "^25.1.0",
     "prettier": "^1.18.2",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^25.2.1",
     "ts-node": "^7.0.1",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.17.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.5.2"
+    "tslint-plugin-prettier": "^2.2.0",
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "concat-stream": "^2.0.0",
     "express": "^4.17.1",
-    "gqlx-apollo-express-server": "^0.3.4",
-    "gqlx-js": "^0.2.6",
-    "request": "^2.88.0",
-    "yargs": "^13.2.4"
+    "gqlx-apollo-express-server": "^0.3.7",
+    "gqlx-js": "^0.2.8",
+    "request": "^2.88.2",
+    "yargs": "^15.3.1"
   }
 }

@@ -82,7 +82,7 @@ export function getFormData(upload: any, data: any) {
 
 export function createOptions(
   host: string,
-  pathOrOptions: string | QueryOptions & Partial<MutationOptions>,
+  pathOrOptions: string | (QueryOptions & Partial<MutationOptions>),
   body?: any,
 ): MutationOptions {
   if (typeof pathOrOptions === 'string') {

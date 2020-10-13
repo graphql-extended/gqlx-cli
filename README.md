@@ -52,7 +52,7 @@ Validates the schema from the given source gqlx file.
 
 ### `serve`
 
-Validates the schema from the given source gqlx file.
+Compiles and runs the schema from the given source gqlx file.
 
 #### Positionals
 

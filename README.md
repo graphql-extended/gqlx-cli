@@ -76,6 +76,8 @@ Validates the schema from the given source gqlx file.
 
 `--debug` - Allows debugger statements and opens the node-inspector (`boolean`, default: `false`).
 
+`--header` - Additional http headers to be set on every request
+
 ### `schema`
 
 Extracts the schema from the given source gqlx file.

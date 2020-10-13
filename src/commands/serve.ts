@@ -22,7 +22,7 @@ export interface SchemaArguments {
 
 export const command = 'serve <source>';
 
-export const describe = 'Validates the schema from the given source gqlx file.';
+export const describe = 'Compiles and runs the schema from the given source gqlx file.';
 
 export function builder(args: Argv) {
   return args

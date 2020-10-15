@@ -95,7 +95,7 @@ export function handler(argv: Arguments<SchemaArguments>) {
     port: argv.port,
     host: argv.host,
     paths: {
-      root: argv.pathRoot,
+      endpoint: argv.pathRoot,
       subscriptions: argv.pathSubscriptions,
     },
     createApi(...args) {

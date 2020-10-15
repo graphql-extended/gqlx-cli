@@ -1,5 +1,9 @@
 # gqlx CLI Changelog
 
+## 0.3.3
+
+- Updated dependencies (#9)
+
 ## 0.3.2
 
 - Updated dependencies

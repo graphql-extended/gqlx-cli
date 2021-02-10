@@ -10,6 +10,7 @@ export const apiDefinition = {
   post: true,
   del: true,
   put: true,
+  patch: true,
   query: true,
   form: true,
   listen: false,
@@ -46,6 +47,10 @@ export function createApi(
     put(url: string | MutationOptions, body?: any) {
       const options = createOptions(service.data.url, url, body);
       return request(fetch, 'PUT', req, options);
+    },
+    patch(url: string | MutationOptions, body?: any) {
+      const options = createOptions(service.data.url, url, body);
+      return request(fetch, 'PATCH', req, options);
     },
   };
 }

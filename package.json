@@ -1,7 +1,7 @@
 {
   "name": "gqlx-cli",
   "description": "Command line utility for GraphQL eXtended.",
-  "version": "0.3.4"
+  "version": "0.3.4",
   "main": "dist",
   "types": "dist",
   "license": "MIT",

@@ -1,5 +1,9 @@
 # gqlx CLI Changelog
 
+## 0.3.4
+
+- Added `patch` http method to api definition 
+
 ## 0.3.3
 
 - Updated dependencies (#9)

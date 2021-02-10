@@ -7,6 +7,8 @@ export interface ResolverApi {
   del(options: QueryOptions): Promise<any>;
   put(url: string, body: any): Promise<any>;
   put(options: MutationOptions): Promise<any>;
+  patch(url: string, body: any): Promise<any>;
+  patch(options: MutationOptions): Promise<any>;
   form(file: any, body: any): Promise<any>;
   query(url: string, q: string): Promise<any>;
   listen(topic: string): void;

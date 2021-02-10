@@ -2,7 +2,8 @@
 
 ## 0.3.4
 
-- Added `patch` http method to api definition 
+- Added `patch` http method to api definition
+- Updated dependencies
 
 ## 0.3.3
 

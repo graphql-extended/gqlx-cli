@@ -1,6 +1,6 @@
 # gqlx CLI
 
-[![Build Status](https://travis-ci.org/graphql-extended/gqlx-cli.svg?branch=master)](https://travis-ci.org/graphql-extended/gqlx-cli)
+[![Build CI](https://github.com/graphql-extended/gqlx-cli/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/graphql-extended/gqlx-cli/actions/workflows/build.yml)
 [![npm](https://img.shields.io/npm/v/gqlx-cli.svg)](https://www.npmjs.com/package/gqlx-cli)
 [![node](https://img.shields.io/node/v/gqlx-cli.svg)](https://www.npmjs.com/package/gqlx-cli)
 [![GitHub tag](https://img.shields.io/github/tag/graphql-extended/gqlx-cli.svg)](https://github.com/graphql-extended/gqlx-cli/releases)
